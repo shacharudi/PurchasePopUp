@@ -55,8 +55,8 @@ class ViewController: UIViewController {
         description.textColor = UIColor.init(red: 236/255, green: 103/255, blue: 103/255, alpha: 1)
         
         title.numberOfLines = 2
-        title.font = UIFont.systemFont(ofSize: 30, weight: .light)
-        description.font = UIFont.systemFont(ofSize: 50, weight: .light)
+        title.font = UIFont.systemFont(ofSize: 30, weight: UIFontWeightLight)
+        description.font = UIFont.systemFont(ofSize: 50, weight: UIFontWeightLight)
         
         return contentView
     }
