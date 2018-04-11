@@ -50,8 +50,8 @@ open class PurchasePopUpPresentor: UIView {
     public var toolbarItemsFont: UIFont? {
         didSet {
             applyToolbarButtonItemsSettings { (barButtonItem) in
-                barButtonItem.setTitleTextAttributes([.font: toolbarItemsFont!], for: .normal)
-                barButtonItem.setTitleTextAttributes([.font: toolbarItemsFont!], for: .highlighted)
+                barButtonItem.setTitleTextAttributes([NSAttributedStringKey.font: toolbarItemsFont!], for: .normal)
+                barButtonItem.setTitleTextAttributes([NSAttributedStringKey.font: toolbarItemsFont!], for: .highlighted)
             }
         }
     }
@@ -59,8 +59,8 @@ open class PurchasePopUpPresentor: UIView {
     public var cancelButtonFont: UIFont? {
         didSet {
             applyToolbarButtonItemsSettings(withAction: #selector(PurchasePopUpPresentor.cancel)) { (barButtonItem) in
-                barButtonItem.setTitleTextAttributes([.font: cancelButtonFont!], for: .normal)
-                barButtonItem.setTitleTextAttributes([.font: cancelButtonFont!], for: .highlighted)
+                barButtonItem.setTitleTextAttributes([NSAttributedStringKey.font: cancelButtonFont!], for: .normal)
+                barButtonItem.setTitleTextAttributes([NSAttributedStringKey.font: cancelButtonFont!], for: .highlighted)
             }
         }
     }
@@ -68,8 +68,8 @@ open class PurchasePopUpPresentor: UIView {
     public var titleFont: UIFont? {
         didSet {
             guard let isTitleButton = self.titleButton else { return }
-            isTitleButton.setTitleTextAttributes([.font: titleFont!], for: .normal)
-            isTitleButton.setTitleTextAttributes([.font: titleFont!], for: .highlighted)
+            isTitleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont!], for: .normal)
+            isTitleButton.setTitleTextAttributes([NSAttributedStringKey.font: titleFont!], for: .highlighted)
         }
     }
     
