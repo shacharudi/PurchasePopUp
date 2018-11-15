@@ -27,7 +27,7 @@ open class PurchasePopUpBarButtonItem: UIBarButtonItem {
         return button
     }
     
-    public class func cancel(purchasePopUpPresentor: PurchasePopUpPresentor, title: String? = nil, barButtonSystemItem: UIBarButtonSystemItem = .cancel) -> PurchasePopUpBarButtonItem {
+    public class func cancel(purchasePopUpPresentor: PurchasePopUpPresentor, title: String? = nil, barButtonSystemItem: UIBarButtonItem.SystemItem = .cancel) -> PurchasePopUpBarButtonItem {
         
         if let buttonTitle = title {
             return self.init(title: buttonTitle, style: .plain, target: purchasePopUpPresentor, action: #selector(PurchasePopUpPresentor.cancel))

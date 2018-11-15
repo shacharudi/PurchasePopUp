@@ -50,8 +50,8 @@ open class PurchasePopUpPresentor: UIView {
     public var toolbarItemsFont: UIFont? {
         didSet {
             applyToolbarButtonItemsSettings { (barButtonItem) in
-                barButtonItem.setTitleTextAttributes([NSFontAttributeName: toolbarItemsFont!], for: .normal)
-                barButtonItem.setTitleTextAttributes([NSFontAttributeName: toolbarItemsFont!], for: .highlighted)
+                barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font: toolbarItemsFont!], for: .normal)
+                barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font: toolbarItemsFont!], for: .highlighted)
             }
         }
     }
@@ -59,8 +59,8 @@ open class PurchasePopUpPresentor: UIView {
     public var cancelButtonFont: UIFont? {
         didSet {
             applyToolbarButtonItemsSettings(withAction: #selector(PurchasePopUpPresentor.cancel)) { (barButtonItem) in
-                barButtonItem.setTitleTextAttributes([NSFontAttributeName: cancelButtonFont!], for: .normal)
-                barButtonItem.setTitleTextAttributes([NSFontAttributeName: cancelButtonFont!], for: .highlighted)
+                barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font: cancelButtonFont!], for: .normal)
+                barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font: cancelButtonFont!], for: .highlighted)
             }
         }
     }
@@ -68,15 +68,15 @@ open class PurchasePopUpPresentor: UIView {
     public var titleFont: UIFont? {
         didSet {
             guard let isTitleButton = self.titleButton else { return }
-            isTitleButton.setTitleTextAttributes([NSFontAttributeName: titleFont!], for: .normal)
-            isTitleButton.setTitleTextAttributes([NSFontAttributeName: titleFont!], for: .highlighted)
+            isTitleButton.setTitleTextAttributes([NSAttributedString.Key.font: titleFont!], for: .normal)
+            isTitleButton.setTitleTextAttributes([NSAttributedString.Key.font: titleFont!], for: .highlighted)
         }
     }
     
     internal var popOverContentSize: CGSize {
         return CGSize(width: Constant.pickerHeight + Constant.toolBarHeight, height: Constant.pickerHeight + Constant.toolBarHeight)
     }
-
+    
     internal let backgroundView: UIView = UIView()
     internal let toolbar: UIToolbar = UIToolbar()
     internal var titleButton: PurchasePopUpBarButtonItem?
@@ -89,7 +89,7 @@ open class PurchasePopUpPresentor: UIView {
     internal enum AnimationDirection {
         case `in`, out // swiftlint:disable:this identifier_name
     }
-
+    
     fileprivate var cancelHandler:() -> Void = { }
     
     private var appWindow: UIWindow {
@@ -119,7 +119,7 @@ open class PurchasePopUpPresentor: UIView {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     // MARK: Show
     //
     open class func show(contentView: UIView, title: String, cancelHandler:@escaping () -> Void) {
@@ -130,7 +130,7 @@ open class PurchasePopUpPresentor: UIView {
         self.cancelHandler = cancelHandler
         animateViews(direction: .in)
     }
-  
+    
     open func setToolbarItems(items: [PurchasePopUpBarButtonItem]) {
         toolbar.items = items
     }
@@ -139,9 +139,9 @@ open class PurchasePopUpPresentor: UIView {
         super.willMove(toWindow: newWindow)
         
         if newWindow != nil {
-            NotificationCenter.default.addObserver(self, selector: #selector(PurchasePopUpPresentor.sizeViews), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(PurchasePopUpPresentor.sizeViews), name: UIDevice.orientationDidChangeNotification, object: nil)
         } else {
-            NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+            NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
         }
     }
     
@@ -227,7 +227,7 @@ open class PurchasePopUpPresentor: UIView {
         self.backgroundColor = UIColor.black.withAlphaComponent(Constant.backgroundAlpha)
         backgroundView.backgroundColor = UIColor.white
         
-
+        
         sizeViews()
         
     }
