@@ -2,11 +2,11 @@
 Pod::Spec.new do |s|
 
 s.name              = 'PurchasePopUp'
-s.version           = '0.0.3'
+s.version           = '0.0.4'
 s.summary           = 'PurchasePopUp'
 s.homepage          = 'https://github.com/mcmatan/PurchasePopUp'
-s.ios.deployment_target = '8.0'
-s.platform = :ios, '8.0'
+s.ios.deployment_target = '10.0'
+s.platform = :ios, '10.0'
 s.license           = {
 :type => 'MIT',
 :file => 'LICENSE'
@@ -15,7 +15,7 @@ s.author            = {
 'YOURNAME' => 'Matan'
 }
 s.source            = {
-:git => 'https://github.com/mcmatan/PurchasePopUp.git',
+:git => 'https://github.com/shacharudi/PurchasePopUp',
 :tag => "#{s.version}" }
 
 s.framework = "UIKit"
